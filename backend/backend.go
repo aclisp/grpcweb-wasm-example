@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	web "github.com/johanbrandhorst/grpcweb-wasm-example/proto"
+	web "grpcweb-wasm-example/proto"
 )
 
 // Backend should be used to implement the server interface

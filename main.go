@@ -14,9 +14,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
 
-	"github.com/johanbrandhorst/grpcweb-wasm-example/backend"
-	"github.com/johanbrandhorst/grpcweb-wasm-example/frontend/bundle"
-	web "github.com/johanbrandhorst/grpcweb-wasm-example/proto"
+	"grpcweb-wasm-example/backend"
+	"grpcweb-wasm-example/frontend/bundle"
+	web "grpcweb-wasm-example/proto"
 )
 
 var logger *logrus.Logger

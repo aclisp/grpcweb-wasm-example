@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/grpclog"
 	"google.golang.org/grpc/status"
 
-	web "github.com/johanbrandhorst/grpcweb-wasm-example/proto"
+	web "grpcweb-wasm-example/proto"
 )
 
 // Build with Go WASM fork
