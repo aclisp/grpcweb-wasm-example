@@ -8,6 +8,7 @@ require (
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/improbable-eng/grpc-web v0.12.0
 	github.com/rs/cors v1.7.0 // indirect
+	github.com/shurcooL/httpfs v0.0.0-20190707220628-8d4bc4ba7749 // indirect
 	github.com/shurcooL/vfsgen v0.0.0-20181202132449-6a9ea43bcacd
 	github.com/sirupsen/logrus v1.6.0
 	google.golang.org/genproto v0.0.0-20200515170657-fc4c6c6a6587
