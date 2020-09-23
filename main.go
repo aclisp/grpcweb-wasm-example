@@ -42,6 +42,7 @@ func main() {
 	handler := func(resp http.ResponseWriter, req *http.Request) {
 		// Redirect gRPC and gRPC-Web requests to the gRPC-Web Websocket Proxy server
 		if req.ProtoMajor == 2 && strings.Contains(req.Header.Get("Content-Type"), "application/grpc") {
+			logger.Infof("got gRPC request: %v", req.URL.String())
 			wrappedServer.ServeHTTP(resp, req)
 			return
 		}

@@ -8,7 +8,7 @@ openssl req \
 -subj /CN=localhost \
 -reqexts SAN \
 -extensions SAN \
--config <(cat /etc/ssl/openssl.cnf \
+-config <(cat /usr/local/etc/openssl/openssl.cnf \
     <(printf '[SAN]\nsubjectAltName=DNS:localhost,IP:127.0.0.1')) \
 -sha256 \
 -days 3650
