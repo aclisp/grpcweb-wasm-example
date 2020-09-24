@@ -2,5 +2,5 @@
 .vscode/
 
 .DS_Store
-frontend/bundle/
+frontend/bundle/bundle.go
 frontend/html/*.wasm
