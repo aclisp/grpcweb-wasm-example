@@ -15,7 +15,7 @@ import (
 )
 
 // Build with Go WASM fork
-//go:generate rm -f ./html/*
+
 //go:generate bash -c "GOOS=js GOARCH=wasm go build -o ./html/test.wasm frontend.go"
 
 //go:generate bash -c "cp $DOLLAR(go env GOROOT)/misc/wasm/wasm_exec.js ./html/wasm_exec.js"
