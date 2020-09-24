@@ -5,6 +5,7 @@ package main
 
 import (
 	"crypto/tls"
+	"io/ioutil"
 	"net/http"
 	"strings"
 	"time"
@@ -31,7 +32,7 @@ func init() {
 		DisableSorting:  true,
 	})
 	// Should only be done from init functions
-	grpclog.SetLoggerV2(grpclog.NewLoggerV2(logger.Out, logger.Out, logger.Out))
+	grpclog.SetLoggerV2(grpclog.NewLoggerV2(logger.Out, ioutil.Discard, ioutil.Discard))
 }
 
 func main() {
