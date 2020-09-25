@@ -7,11 +7,14 @@ import (
 	"crypto/tls"
 	"io/ioutil"
 	"net/http"
+	_ "net/http/pprof"
 	"strings"
 	"time"
 
+	"github.com/gorilla/mux"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	"github.com/sirupsen/logrus"
+	"golang.org/x/net/trace"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
 
@@ -33,6 +36,11 @@ func init() {
 	})
 	// Should only be done from init functions
 	grpclog.SetLoggerV2(grpclog.NewLoggerV2(logger.Out, ioutil.Discard, ioutil.Discard))
+	// for pprof and trace
+	grpc.EnableTracing = true
+	trace.AuthRequest = func(req *http.Request) (any, sensitive bool) {
+		return true, true
+	}
 }
 
 func main() {
@@ -51,11 +59,14 @@ func main() {
 		// Serve the WASM client
 		wasmContentTypeSetter(http.FileServer(bundle.Assets)).ServeHTTP(resp, req)
 	}
+	router := mux.NewRouter()
+	router.PathPrefix("/debug/").Handler(http.DefaultServeMux)
+	router.PathPrefix("/").Handler(http.HandlerFunc(handler))
 
 	addr := "localhost:10000"
 	httpsSrv := &http.Server{
 		Addr:    addr,
-		Handler: http.HandlerFunc(handler),
+		Handler: router,
 		// Some security settings
 		ReadHeaderTimeout: 5 * time.Second,
 		IdleTimeout:       120 * time.Second,
