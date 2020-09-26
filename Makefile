@@ -1,6 +1,7 @@
 generate:
-	protoc -I. ./proto/web.proto --go_out=plugins=grpc:.
+	protoc -Iproto proto/web.proto --go_out=plugins=grpc:proto --go_opt=paths=source_relative
 	go generate -x ./frontend/
 
 serve:
-	go run main.go
+	GOOS=js GOARCH=wasm go build -o frontend/html/test.wasm frontend/frontend.go
+	go run -tags=dev main.go
