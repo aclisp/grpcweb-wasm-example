@@ -20,6 +20,7 @@ type Backend struct {
 // Ensure struct implements interface
 var _ web.BackendServer = (*Backend)(nil)
 
+// GetUser gets one user
 func (b Backend) GetUser(ctx context.Context, req *web.GetUserRequest) (*web.User, error) {
 	if req.GetUserId() != "1234" {
 		st := status.New(codes.NotFound, "invalid id")
@@ -41,6 +42,7 @@ func (b Backend) GetUser(ctx context.Context, req *web.GetUserRequest) (*web.Use
 	}, nil
 }
 
+// GetUsers gets multiple users
 func (b Backend) GetUsers(req *web.GetUsersRequest, srv web.Backend_GetUsersServer) error {
 	for index := 0; index < int(req.GetNumUsers()); index++ {
 		err := srv.Send(&web.User{

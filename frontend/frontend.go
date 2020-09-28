@@ -16,7 +16,7 @@ import (
 
 // Build with Go WASM fork
 
-//go:generate bash -c "GOOS=js GOARCH=wasm go build -o ./html/test.wasm frontend.go"
+//go:generate bash -c "GOOS=js GOARCH=wasm go build -o ./html/main.wasm frontend.go"
 
 //go:generate bash -c "cp $DOLLAR(go env GOROOT)/misc/wasm/wasm_exec.js ./html/wasm_exec.js"
 
@@ -25,6 +25,7 @@ import (
 
 var document js.Value
 
+// DivWriter is an io.Writer
 type DivWriter js.Value
 
 func (d DivWriter) Write(p []byte) (n int, err error) {

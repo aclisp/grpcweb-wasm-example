@@ -3,5 +3,5 @@ generate:
 	go generate -x ./frontend/
 
 serve:
-	GOOS=js GOARCH=wasm go build -o frontend/html/test.wasm frontend/frontend.go
+	GOOS=js GOARCH=wasm go build -o frontend/html/main.wasm frontend/frontend.go
 	go run -tags=dev main.go
